@@ -41,9 +41,9 @@ export default function HeroSection() {
         {/* Left Side Subtext */}
         <div className="max-w-[340px] text-left">
           <p className="font-sans text-[12.5px] md:text-[13.5px] font-bold leading-relaxed tracking-[0.08em] text-neutral-400 uppercase">
-            A 3D DESIGNER PASSIONATE<br />
-            ABOUT CRAFTING BOLD AND<br />
-            MEMORABLE PROJECTS 😉
+            FULL STACK DEVELOPER<br />
+            SPECIALIZING IN SCALABLE WEB APPS<br />
+            & INTERACTIVE 3D WEBSITES 💻
           </p>
         </div>
 
@@ -51,12 +51,12 @@ export default function HeroSection() {
         <div className="flex items-center justify-end w-full md:w-auto">
           <button className="glow-button group">
             CONTACT ME
-            <svg 
-              className="w-4 h-4 text-white transform group-hover:translate-x-1 transition-transform duration-300" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              className="w-4 h-4 text-white transform group-hover:translate-x-1 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
               strokeWidth="2.5"
-              viewBox="0 0 24 24" 
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
