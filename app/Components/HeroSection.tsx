@@ -23,14 +23,14 @@ export default function HeroSection() {
           </h1>
 
           {/* Bitmoji Head overlapping the text */}
-          <div className="absolute top-[35%] sm:top-[40%] md:top-[45%] left-1/2 -translate-x-1/2 w-[340px] sm:w-[440px] md:w-[500px] lg:w-[550px] aspect-square z-10 animate-float pointer-events-none">
+          <div className="absolute top-[35%] sm:top-[40%] md:top-[45%] left-1/2 -translate-x-1/2 w-[400px] sm:w-[520px] md:w-[600px] lg:w-[680px] aspect-square z-10 animate-float pointer-events-none">
             <Image
               src="/assets/Images/bitmoji.png"
               alt="Alex Bitmoji"
               fill
               priority
               className="object-contain"
-              sizes="(max-w-640px) 340px, (max-w-768px) 440px, (max-w-1024px) 500px, 550px"
+              sizes="(max-w-640px) 400px, (max-w-768px) 520px, (max-w-1024px) 600px, 680px"
             />
           </div>
         </div>
