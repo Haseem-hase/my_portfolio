@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-archivo-black), sans-serif;
+  --font-sans: var(--font-outfit), sans-serif;
+
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+}
+
+html,
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* Custom styles for matching the layout and button in the reference image */
+
+.glow-button {
+  position: relative;
+  background: #000000;
+  border-radius: 9999px;
+  padding: 0.875rem 2.25rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg, #d91b8d, #f14d3a, #e78b1d, #d91b8d);
+  background-size: 200% auto;
+  border-radius: 9999px;
+  z-index: -1;
+  transition: all 0.4s ease;
+  animation: borderGradient 4s linear infinite;
+}
+
+.glow-button::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg, #d91b8d, #f14d3a, #e78b1d, #d91b8d);
+  background-size: 200% auto;
+  border-radius: 9999px;
+  z-index: -2;
+  filter: blur(14px);
+  opacity: 0.75;
+  transition: all 0.4s ease;
+  animation: borderGradient 4s linear infinite;
+}
+
+@keyframes borderGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.glow-button:hover {
+  transform: scale(1.04) translateY(-2px);
+  color: #ffffff;
+}
+
+.glow-button:hover::after {
+  filter: blur(20px);
+  opacity: 1;
+}
+
+/* Heading Gradient Overlay to match silver metal texture */
+.silver-gradient-text {
+  background: linear-gradient(to bottom, #ffffff 30%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
