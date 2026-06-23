@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Outfit } from "next/font/google";
+import { Archivo_Black, Outfit, Caveat } from "next/font/google";
 import "./globals.css";
 
 const archivoBlack = Archivo_Black({
@@ -11,6 +11,12 @@ const archivoBlack = Archivo_Black({
 const outfit = Outfit({
   variable: "--font-outfit",
   weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivoBlack.variable} ${outfit.variable} h-full antialiased`}
+      className={`${archivoBlack.variable} ${outfit.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

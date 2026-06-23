@@ -3,6 +3,7 @@
 @theme {
   --font-display: var(--font-archivo-black), sans-serif;
   --font-sans: var(--font-outfit), sans-serif;
+  --font-handwritten: var(--font-caveat), cursive;
 
 
   --animate-float: float 6s ease-in-out infinite;

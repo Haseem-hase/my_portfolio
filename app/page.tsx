@@ -1,11 +1,13 @@
 import React from 'react'
 import HeroSection from './Components/HeroSection'
+import AboutMe from './Components/AboutMe'
 import Gallery from './Components/Gallery'
 
 const page = () => {
   return (
     <main className="min-h-screen bg-black">
       <HeroSection />
+      <AboutMe />
       {/* 3D Dome Gallery Section */}
       <section className="relative w-full h-screen bg-black flex flex-col justify-start items-center overflow-hidden pt-16">
         {/* Gallery Section Heading */}
