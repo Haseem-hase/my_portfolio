@@ -1,9 +1,71 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
 
 export default function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const outer = outerRef.current;
+    const inner = innerRef.current;
+
+    if (!container || !outer || !inner) return;
+
+    // Set perspective on the parent of the rotating outer element (the float container)
+    if (outer.parentElement) {
+      gsap.set(outer.parentElement, { perspective: 800 });
+    }
+
+    // Set up quickTo interpolation for smooth transitions
+    const outerRX = gsap.quickTo(outer, "rotationX", { ease: "power3", duration: 0.6 });
+    const outerRY = gsap.quickTo(outer, "rotationY", { ease: "power3", duration: 0.6 });
+    const innerX = gsap.quickTo(inner, "x", { ease: "power3", duration: 0.6 });
+    const innerY = gsap.quickTo(inner, "y", { ease: "power3", duration: 0.6 });
+
+    const handlePointerMove = (e: PointerEvent) => {
+      const { clientX, clientY } = e;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Calculate relative position percentage (0 to 1)
+      const xPercent = clientX / width;
+      const yPercent = clientY / height;
+
+      // Calculate rotations and offsets
+      // outerRX: rotationX from 15 to -15 based on vertical cursor position
+      // outerRY: rotationY from -15 to 15 based on horizontal cursor position
+      // innerX: offset X from -30 to 30 based on horizontal cursor position
+      // innerY: offset Y from -30 to 30 based on vertical cursor position
+      outerRX(gsap.utils.interpolate(15, -15, yPercent));
+      outerRY(gsap.utils.interpolate(-15, 15, xPercent));
+      innerX(gsap.utils.interpolate(-30, 30, xPercent));
+      innerY(gsap.utils.interpolate(-30, 30, yPercent));
+    };
+
+    const handlePointerLeave = () => {
+      // Reset position when pointer leaves the container
+      outerRX(0);
+      outerRY(0);
+      innerX(0);
+      innerY(0);
+    };
+
+    container.addEventListener("pointermove", handlePointerMove);
+    container.addEventListener("pointerleave", handlePointerLeave);
+
+    return () => {
+      container.removeEventListener("pointermove", handlePointerMove);
+      container.removeEventListener("pointerleave", handlePointerLeave);
+    };
+  }, []);
+
   return (
-    <section className="relative w-full min-h-screen bg-black flex flex-col justify-start items-center overflow-hidden">
+    <section ref={containerRef} className="relative w-full min-h-screen bg-black flex flex-col justify-start items-center overflow-hidden">
       {/* Top Navigation */}
       <header className="w-full z-30">
         <nav className="w-full max-w-6xl mx-auto px-6 md:px-8 pt-8 pb-3 flex justify-between items-center text-xs md:text-sm font-bold tracking-[0.25em] text-neutral-400">
@@ -23,15 +85,19 @@ export default function HeroSection() {
           </h1>
 
           {/* Bitmoji Head overlapping the text */}
-          <div className="absolute top-[35%] sm:top-[40%] md:top-[45%] left-1/2 -translate-x-1/2 w-[400px] sm:w-[520px] md:w-[600px] lg:w-[680px] aspect-square z-10 animate-float pointer-events-none">
-            <Image
-              src="/assets/Images/myBitmoji.png"
-              alt="Alex Bitmoji"
-              fill
-              priority
-              className="object-contain"
-              sizes="(max-w-640px) 400px, (max-w-768px) 520px, (max-w-1024px) 600px, 680px"
-            />
+          <div className="absolute top-[35%] sm:top-[40%] md:top-[45%] left-1/2 -translate-x-1/2 w-[400px] sm:w-[520px] md:w-[600px] lg:w-[680px] aspect-square z-10 animate-float pointer-events-none" style={{ transformStyle: 'preserve-3d' }}>
+            <div ref={outerRef} className="w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}>
+              <div ref={innerRef} className="w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}>
+                <Image
+                  src="/assets/Images/myBitmoji.png"
+                  alt="Alex Bitmoji"
+                  fill
+                  priority
+                  className="object-contain"
+                  sizes="(max-w-640px) 400px, (max-w-768px) 520px, (max-w-1024px) 600px, 680px"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
