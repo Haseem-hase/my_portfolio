@@ -106,17 +106,16 @@ export default function HeroSection() {
       <div className="w-full max-w-7xl mx-auto px-8 mt-16 sm:mt-24 md:mt-32 pb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 z-20">
         {/* Left Side Subtext */}
         <div className="max-w-[340px] text-left">
-          <p className="font-sans text-[12.5px] md:text-[13.5px] font-bold leading-relaxed tracking-[0.08em] text-neutral-400 uppercase">
-            FULL STACK DEVELOPER<br />
-            SPECIALIZING IN SCALABLE WEB APPS<br />
-            & INTERACTIVE 3D WEBSITES 💻
+          <p className="font-sans text-[12.5px] md:text-[13.5px] font-medium leading-relaxed tracking-[0.05em] text-neutral-400">
+            <span className="font-bold uppercase block mb-1.5 tracking-[0.08em] text-neutral-300">FULL STACK DEVELOPER</span>
+            I build fast, scalable web apps — from sleek React frontends to solid Node.js backends. Currently based in Riyadh, open to exciting opportunities.
           </p>
         </div>
 
         {/* Right Side Glow Button */}
         <div className="flex items-center justify-end w-full md:w-auto">
           <button className="glow-button group">
-            CONTACT ME
+            LET'S CONNECT
             <svg
               className="w-4 h-4 text-white transform group-hover:translate-x-1 transition-transform duration-300"
               fill="none"

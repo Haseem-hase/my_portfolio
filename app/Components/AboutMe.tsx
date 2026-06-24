@@ -51,11 +51,11 @@ export default function AboutMe() {
           {/* Main Subtext / Description */}
           <div className="flex flex-col text-left max-w-xl font-sans">
             <p className="text-neutral-300 text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed mb-6 font-medium">
-              Hi, I&apos;m <strong className="text-white font-bold">Haseem</strong>! I&apos;m a <strong className="text-white font-bold">full-stack developer</strong> dedicated to turning complex ideas into digital masterpieces.
+              I&apos;m a <strong className="text-white font-bold">Full Stack Developer</strong> with a genuine love for turning complex problems into clean, intuitive digital experiences. Over the past two years, I&apos;ve worked across the full stack — building everything from <strong className="text-white font-bold">AI-powered ERP platforms</strong> to <strong className="text-white font-bold">real-time car rental systems</strong> built for the GCC market.
             </p>
             
             <p className="text-neutral-300 text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed mb-8 font-medium">
-              For me, <strong className="text-white font-bold">web development</strong> is not just about writing clean lines of code, but building a <strong className="text-white font-bold">powerful digital experience</strong> that leaves a lasting impression and perfectly communicates your vision.
+              I care about the details: <strong className="text-white font-bold">smooth animations</strong>, clean code, fast load times, and interfaces that actually make sense to the people using them. When I&apos;m not writing code, I&apos;m probably exploring new tech, experimenting with <strong className="text-white font-bold">Three.js</strong>, or figuring out how to make the web feel a little more alive.
             </p>
             
             {/* Highlighter Styled Call to Action (High-Contrast White Sticker style) */}
