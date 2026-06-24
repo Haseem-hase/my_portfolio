@@ -232,75 +232,50 @@ const CloseIcon = () => {
 
 const experiences = [
   {
-    company: "Enterprise ERP & AI Labs",
-    title: "AI & Full Stack Lead",
-    period: "2024 - Present",
-    location: "Remote / Hybrid",
-    description: "Building production-grade AI-powered ERP platforms and telemetry dashboards.",
-    src: "/assets/Images/experience_erp_thumb.png",
+    company: "Brandstrek Coders LLP",
+    title: "Front End Developer",
+    period: "July 2025 – May 2026",
+    location: "Hybrid",
+    description: "Built and maintained responsive web apps, created interactive 3D experiences, and contributed to an ERP platform.",
+    src: "/assets/logos/icon.png",
     ctaText: "Details",
     ctaLink: "#contact",
     content: () => {
       return (
         <div className="flex flex-col gap-3 font-sans">
           <p>
-            Led the architectural design and full stack development of an AI-powered Enterprise Resource Planning (ERP) platform. Built specialized modules to process large datasets, streamline logistics operations, and deliver real-time system logs.
+            Developed responsive frontend applications and interactive web experiences using React, Next.js, and advanced animation tools in an Agile development environment.
           </p>
           <ul className="list-disc pl-5 flex flex-col gap-1.5 text-neutral-400 text-xs">
-            <li>Designed interactive telemetry and sensor dashboards tracking real-time status updates and machine loading graphs.</li>
-            <li>Optimized Postgres SQL query pipelines and implemented Redis state caching, resulting in a 40% latency reduction.</li>
-            <li>Engineered highly reactive React client views featuring fluid state-machine state management and layout transitions.</li>
-            <li>Collaborated with product designers to implement a custom design system based on Tailwind CSS v4.0.</li>
+            <li>Built and maintained highly responsive, feature-rich web applications with clean React codebases.</li>
+            <li>Created engaging interactive 3D experiences and fluid UI animations that enhanced user interaction.</li>
+            <li>Contributed core frontend modules and interface components to an enterprise ERP platform.</li>
+            <li>Collaborated closely with cross-functional product, design, and QA teams in sprints and code reviews.</li>
           </ul>
         </div>
       );
     },
   },
   {
-    company: "GCC Mobility Solutions",
-    title: "Senior Booking Engine Architect",
-    period: "2022 - 2024",
-    location: "GCC Market (Remote)",
-    description: "Architected high-volume real-time car rental checkout flows and digital dashboards.",
-    src: "/assets/Images/experience_rental_thumb.png",
+    company: "Luminar Technolab",
+    title: "MEARN Stack Intern",
+    period: "July 2024 – January 2025",
+    location: "Kochi, India",
+    description: "Developed full stack web features, designed secure REST APIs, and integrated JWT authentication.",
+    src: "/assets/logos/luminar_logo.png",
     ctaText: "Details",
     ctaLink: "#contact",
     content: () => {
       return (
         <div className="flex flex-col gap-3 font-sans">
           <p>
-            Re-engineered booking modules and checkout processes for a major GCC-based car rental platform, handling thousands of transactions daily. Implemented complex location visualization and price computation engines.
+            Gained hands-on full stack software development experience building and deploying MEARN (MongoDB, Express, React, Node.js) web applications.
           </p>
           <ul className="list-disc pl-5 flex flex-col gap-1.5 text-neutral-400 text-xs">
-            <li>Integrated third-party Mapbox SDK for custom interactive pickup station overlays and dynamic radius search filters.</li>
-            <li>Built high-reliability checkout flows, reducing checkout friction and increasing conversion rates by 15%.</li>
-            <li>Crafted reusable chart widgets, analytics dashboard cards, and localized calendars supporting RTL (Arabic) languages.</li>
-            <li>Implemented end-to-end integration testing for booking transactions, ensuring 99.9% uptime validation.</li>
-          </ul>
-        </div>
-      );
-    },
-  },
-  {
-    company: "Creative Studio & Labs",
-    title: "Creative Developer & Consultant",
-    period: "2021 - 2022",
-    location: "Freelance",
-    description: "Crafted interactive portfolios, custom SVG layout engines, and high-performance sites.",
-    src: "/assets/Images/experience_creative_thumb.png",
-    ctaText: "Details",
-    ctaLink: "#contact",
-    content: () => {
-      return (
-        <div className="flex flex-col gap-3 font-sans">
-          <p>
-            Partnered with design agencies and tech startups to create highly immersive, brand-focused web properties. Specialized in complex canvas layouts, web physics animations, and strict SEO compliance.
-          </p>
-          <ul className="list-disc pl-5 flex flex-col gap-1.5 text-neutral-400 text-xs">
-            <li>Developed customized 3D landing experiences utilizing Three.js shaders and GSAP ScrollTriggers.</li>
-            <li>Achieved Lighthouse scores of 98+ across all metrics by applying aggressive asset optimizations and SSR patterns.</li>
-            <li>Ensured strict WCAG accessibility compliance across interactive layout components and customized inputs.</li>
-            <li>Wrote custom PostCSS utilities and responsive grids matching bespoke design specs.</li>
+            <li>Built custom, responsive frontend interfaces with React, state management, and form validations.</li>
+            <li>Designed and implemented secure REST APIs using Node.js and Express to drive application capabilities.</li>
+            <li>Implemented user authentication and authorization using JWT (JSON Web Tokens) and bcrypt.</li>
+            <li>Integrated payment gateways and processed API callbacks to ensure smooth end-to-end user transactions.</li>
           </ul>
         </div>
       );
