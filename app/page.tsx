@@ -4,6 +4,7 @@ import AboutMe from './Components/AboutMe'
 import Skills from './Components/Skills'
 import Experience from './Components/Experience'
 import Gallery from './Components/Gallery'
+import Footer from './Components/Footer'
 
 const page = () => {
   return (
@@ -28,6 +29,9 @@ const page = () => {
           <Gallery />
         </div>
       </section>
+
+      {/* Interactive Footer */}
+      <Footer />
     </main>
   )
 }
