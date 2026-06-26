@@ -129,7 +129,7 @@ export default function Experience() {
                   </motion.a>
                 </div>
 
-                <div className="relative flex-1 overflow-y-auto pr-1 max-h-[220px] custom-scrollbar">
+                <div className="relative flex-1 overflow-y-auto pr-1 max-h-[320px] custom-scrollbar">
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
@@ -140,6 +140,31 @@ export default function Experience() {
                     {typeof active.content === "function"
                       ? active.content()
                       : active.content}
+
+                    {active.certificates && active.certificates.length > 0 && (
+                      <div className="mt-2 pt-4 border-t border-neutral-800/60 flex flex-col gap-2">
+                        <h4 className="text-xs uppercase tracking-wider font-semibold text-neutral-500">
+                          Certificates
+                        </h4>
+                        <div className={`grid ${active.certificates.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+                          {active.certificates.map((cert: string, idx: number) => (
+                            <a
+                              key={idx}
+                              href={cert}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="relative block rounded-xl overflow-hidden border border-neutral-800 hover:border-neutral-700/80 bg-neutral-900/50 hover:bg-neutral-900 transition-all duration-300 group p-1"
+                            >
+                              <img
+                                src={cert}
+                                alt={`${active.company} Certificate ${idx + 1}`}
+                                className="w-full h-32 sm:h-36 object-contain rounded-lg group-hover:scale-[1.02] transition-transform duration-300"
+                              />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </motion.div>
                 </div>
               </div>
@@ -251,6 +276,10 @@ const experiences = [
     src: "/assets/logos/icon.png",
     modalImage: "/assets/Images/brandstrekGroup.webp",
     url: "https://www.brandstrekcoders.com/",
+    certificates: [
+      "/assets/Images/Workexperiences/wrkExBrandstrek.webp",
+      "/assets/Images/Workexperiences/wrkExBrandstrek1.webp"
+    ],
     ctaText: "Details",
     ctaLink: "#contact",
     content: () => {
@@ -278,6 +307,9 @@ const experiences = [
     src: "/assets/logos/luminar_logo.png",
     modalImage: "/assets/Images/luminarGroup.webp",
     url: "https://www.luminartechnolab.com/",
+    certificates: [
+      "/assets/Images/Workexperiences/wrkExLuminar.webp"
+    ],
     ctaText: "Details",
     ctaLink: "#contact",
     content: () => {
