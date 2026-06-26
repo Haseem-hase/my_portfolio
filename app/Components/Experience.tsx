@@ -86,15 +86,20 @@ export default function Experience() {
             >
               <motion.div layoutId={`image-${active.title}-${id}`} className="relative h-64 sm:h-72 w-full">
                 <img
-                  src={active.src}
+                  src={active.modalImage || active.src}
                   alt={active.title}
                   className="w-full h-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
                 <div className="absolute bottom-4 left-6">
-                  <span className="text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                  <a
+                    href={active.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30 transition-colors"
+                  >
                     {active.company}
-                  </span>
+                  </a>
                 </div>
               </motion.div>
 
@@ -172,9 +177,15 @@ export default function Experience() {
                     {experience.title}
                   </motion.h3>
                   <span className="hidden md:inline text-neutral-600">•</span>
-                  <span className="text-xs uppercase tracking-wider text-purple-400 font-semibold md:mt-0.5">
+                  <a
+                    href={experience.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-xs uppercase tracking-wider text-purple-400 font-semibold md:mt-0.5 hover:underline"
+                  >
                     {experience.company}
-                  </span>
+                  </a>
                 </div>
                 <motion.p
                   layoutId={`description-${experience.description}-${id}`}
@@ -236,8 +247,10 @@ const experiences = [
     title: "Front End Developer",
     period: "July 2025 – May 2026",
     location: "Hybrid",
-    description: "Built and maintained responsive web apps, created interactive 3D experiences, and contributed to an ERP platform.",
+    description: "Built and maintained responsive web apps, created interactive 3D experiences, contributed to an ERP platform, and worked closely with cross-functional teams in an Agile setup.",
     src: "/assets/logos/icon.png",
+    modalImage: "/assets/Images/brandstrekGroup.webp",
+    url: "https://www.brandstrekcoders.com/",
     ctaText: "Details",
     ctaLink: "#contact",
     content: () => {
@@ -261,8 +274,10 @@ const experiences = [
     title: "MEARN Stack Intern",
     period: "July 2024 – January 2025",
     location: "Kochi, India",
-    description: "Developed full stack web features, designed secure REST APIs, and integrated JWT authentication.",
+    description: "Got my hands dirty with the full stack — built frontend interfaces, designed REST APIs, implemented JWT auth, and integrated payment gateways under real project pressure.",
     src: "/assets/logos/luminar_logo.png",
+    modalImage: "/assets/Images/luminarGroup.webp",
+    url: "https://www.luminartechnolab.com/",
     ctaText: "Details",
     ctaLink: "#contact",
     content: () => {
