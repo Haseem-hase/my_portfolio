@@ -2,6 +2,45 @@
 
 import React, { useState } from 'react';
 import Cubes from './Cubes';
+import {
+  SiJavascript,
+  SiTypescript,
+  SiHtml5,
+  SiTailwindcss,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiAngular,
+  SiThreedotjs,
+  SiGreensock,
+  SiFramer,
+  SiRedux,
+  SiMongodb,
+  SiPostgresql,
+  SiRedis,
+  SiGit,
+  SiDocker,
+  SiVercel,
+  SiFirebase,
+  SiFigma,
+  SiPostman,
+  SiSocketdotio,
+  SiStripe,
+  SiRazorpay
+} from 'react-icons/si';
+import { FaCss3Alt, FaAws } from 'react-icons/fa';
+import {
+  TbCode,
+  TbHierarchy,
+  TbTerminal2,
+  TbTopologyRing3,
+  TbBolt,
+  TbWorld,
+  TbSettingsAutomation,
+  TbShieldLock,
+  TbCloud
+} from 'react-icons/tb';
 
 interface SkillItem {
   name: string;
@@ -21,335 +60,189 @@ export default function Skills() {
       category: 'Languages',
       color: '#F7DF1E',
       description: 'Core scripting language for client-side and server-side application logic.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <rect width="20" height="20" x="2" y="2" rx="4" />
-          <text x="6" y="14" fill="#FFFFFF" fontSize="9" fontWeight="bold" fontFamily="sans-serif" stroke="none">JS</text>
-        </svg>
-      )
+      icon: <SiJavascript className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'TypeScript',
       category: 'Languages',
       color: '#3178C6',
       description: 'Strongly typed superset of JavaScript for building robust, self-documenting applications.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <rect width="20" height="20" x="2" y="2" rx="4" />
-          <text x="6" y="14" fill="#FFFFFF" fontSize="9" fontWeight="bold" fontFamily="sans-serif" stroke="none">TS</text>
-        </svg>
-      )
+      icon: <SiTypescript className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'HTML5',
       category: 'Languages',
       color: '#E34F26',
       description: 'Semantic markup and modern layout structures for search-engine-optimized interfaces.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M1.5 22L3.5 2H20.5L22.5 22L12 25L1.5 22Z" fill="#FFFFFF" fillOpacity="0.05" />
-          <text x="8.5" y="15" fill="#FFFFFF" fontSize="11" fontWeight="900" fontFamily="sans-serif" stroke="none">5</text>
-        </svg>
-      )
+      icon: <SiHtml5 className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'CSS3',
       category: 'Languages',
       color: '#1572B6',
       description: 'Advanced responsive layouts, animations, transitions, and native styling rules.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M1.5 22L3.5 2H20.5L22.5 22L12 25L1.5 22Z" fill="#FFFFFF" fillOpacity="0.05" />
-          <text x="8.5" y="15" fill="#FFFFFF" fontSize="11" fontWeight="900" fontFamily="sans-serif" stroke="none">3</text>
-        </svg>
-      )
+      icon: <FaCss3Alt className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Tailwind CSS',
       category: 'Frontend',
       color: '#06B6D4',
       description: 'Utility-first design systems for building lightning-fast, sleek custom interfaces.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M12 3c-3 0-5 2-6 5 2-1 4-1 5 1 1 2 2 3 5 3 3 0 5-2 6-5-2 1-4 1-5-1-1-2-2-3-5-3zm-6 8c-3 0-5 2-6 5 2-1 4-1 5 1 1 2 2 3 5 3 3 0 5-2 6-5-2 1-4 1-5-1-1-2-2-3-5-3z" />
-        </svg>
-      )
+      icon: <SiTailwindcss className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'React.js',
       category: 'Frontend',
       color: '#61DAFB',
       description: 'Component-based architecture for crafting reactive, high-performance web interfaces.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <ellipse cx="12" cy="12" rx="9" ry="3" transform="rotate(30 12 12)" />
-          <ellipse cx="12" cy="12" rx="9" ry="3" transform="rotate(90 12 12)" />
-          <ellipse cx="12" cy="12" rx="9" ry="3" transform="rotate(150 12 12)" />
-          <circle cx="12" cy="12" r="1.5" fill="#FFFFFF" stroke="none" />
-        </svg>
-      )
+      icon: <SiReact className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Next.js',
       category: 'Frontend',
       color: '#FFFFFF',
       description: 'Production-grade React framework featuring server components, SSR, and optimized routing.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="10" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M8 16V8l8 8V8" />
-        </svg>
-      )
+      icon: <SiNextdotjs className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Node.js',
       category: 'Backend & DB',
       color: '#339933',
       description: 'Event-driven asynchronous server environment for constructing high-throughput backends.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M12 2L4 7v10l8 5l8-5V7L12 2z" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M12 2v20M4 7l8 5 8-5" />
-        </svg>
-      )
+      icon: <SiNodedotjs className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Express.js',
       category: 'Backend & DB',
       color: '#FFFFFF',
       description: 'Minimalist web framework for building performant RESTful APIs and middleware services.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <rect width="20" height="20" x="2" y="2" rx="4" fill="#FFFFFF" fillOpacity="0.05" />
-          <text x="5" y="15" fill="#FFFFFF" fontSize="9" fontWeight="bold" stroke="none">EX</text>
-        </svg>
-      )
+      icon: <SiExpress className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Angular',
       category: 'Frontend',
       color: '#DD0031',
       description: 'Enterprise-grade client framework for structured, modular frontend architectures.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M12 2L2 6l3 13l7 3l7-3l3-13L12 2Z" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M12 2v20M8 14h8M12 7l-4 7m4-7l4 7" />
-        </svg>
-      )
+      icon: <SiAngular className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Three.js',
       category: 'Creative & Motion',
       color: '#FF5E00',
       description: '3D web graphics library for rendering interactive WebGL components directly in the browser.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M4 19L12 5l8 14H4z" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M12 5v14M4 19h8" />
-        </svg>
-      )
+      icon: <SiThreedotjs className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'GSAP',
       category: 'Creative & Motion',
       color: '#88CE02',
       description: 'Industry-leading timeline animation engine for rich, high-performance interactions.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="10" fill="#FFFFFF" fillOpacity="0.05" />
-          <circle cx="12" cy="12" r="6" />
-          <circle cx="12" cy="12" r="2" fill="#FFFFFF" stroke="none" />
-        </svg>
-      )
+      icon: <SiGreensock className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Framer Motion',
       category: 'Creative & Motion',
       color: '#F107A3',
       description: 'Declarative motion library for fluid React layout transitions and physics-based animations.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M4 4h16L12 12L4 4z" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M4 12h16l-8 8l-8-8z" />
-        </svg>
-      )
+      icon: <SiFramer className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Redux Toolkit',
       category: 'Frontend',
       color: '#764ABC',
       description: 'Predictable global state management container for large-scale, complex client apps.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M12 2a4 4 0 0 1 4 4v12a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z" transform="rotate(45 12 12)" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M12 2a4 4 0 0 1 4 4v12a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z" transform="rotate(-45 12 12)" />
-        </svg>
-      )
+      icon: <SiRedux className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'MongoDB',
       category: 'Backend & DB',
       color: '#47A248',
       description: 'NoSQL document database enabling flexible schemas and fast horizontal scaling.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M12 2C12 2 7 8 7 13C7 17 9 20 12 22C15 20 17 17 17 13C17 8 12 2 12 2Z" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M12 2v20" />
-        </svg>
-      )
+      icon: <SiMongodb className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'PostgreSQL',
       category: 'Backend & DB',
       color: '#4169E1',
       description: 'Advanced, ACID-compliant relational SQL database for structured transactional storage.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M12 3a8 8 0 0 0-8 8c0 3.3 2 6.2 5 7.4V21h6v-2.6c3-1.2 5-4.1 5-7.4a8 8 0 0 0-8-8z" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M8 11h8" />
-        </svg>
-      )
+      icon: <SiPostgresql className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Redis',
       category: 'Backend & DB',
       color: '#DC382D',
       description: 'In-memory caching store facilitating ultra-low latency key-value operations and session states.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M4 6l8-3l8 3v4l-8 3l-8-3V6z" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M4 13l8-3l8 3v4l-8 3l-8-3v-4z" />
-        </svg>
-      )
+      icon: <SiRedis className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Git',
       category: 'DevOps & Platforms',
       color: '#F05032',
       description: 'Distributed version control system for robust team collaboration and source tracking.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="12" cy="18" r="3" fill="#FFFFFF" fillOpacity="0.1" />
-          <circle cx="12" cy="6" r="3" />
-          <circle cx="18" cy="12" r="3" />
-          <path d="M12 9v6M12 12h3" />
-        </svg>
-      )
+      icon: <SiGit className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Docker',
       category: 'DevOps & Platforms',
       color: '#2496ED',
       description: 'Containerization platform to build, package, and deploy software services consistently.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <rect x="5" y="10" width="4" height="4" rx="1" fill="#FFFFFF" fillOpacity="0.05" />
-          <rect x="10" y="10" width="4" height="4" rx="1" />
-          <rect x="15" y="10" width="4" height="4" rx="1" />
-          <rect x="10" y="5" width="4" height="4" rx="1" />
-          <path d="M2 16c4 3 16 3 20 0" />
-        </svg>
-      )
+      icon: <SiDocker className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'AWS',
       category: 'DevOps & Platforms',
       color: '#FF9900',
       description: 'Cloud hosting, computing, and managed database services for high scalability.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M4 14c4 4 12 4 16 0" />
-          <path d="M17 12l3 2l-1 3" />
-          <text x="6" y="10" fill="#FFFFFF" fontSize="7" fontWeight="bold" stroke="none">AWS</text>
-        </svg>
-      )
+      icon: <FaAws className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Vercel',
       category: 'DevOps & Platforms',
       color: '#FFFFFF',
       description: 'Optimized serverless hosting platform tailored for Next.js and frontend applications.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M12 3l10 17H2L12 3z" fill="#FFFFFF" fillOpacity="0.1" />
-        </svg>
-      )
+      icon: <SiVercel className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Firebase',
       category: 'DevOps & Platforms',
       color: '#FFCA28',
       description: 'Backend-as-a-Service covering authentication, real-time databases, and cloud alerts.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M4 18l8-15l3 6" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M20 18L12 3v15M4 18h16" />
-        </svg>
-      )
+      icon: <SiFirebase className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Figma',
       category: 'Tools & Payments',
       color: '#F24E1E',
       description: 'Visual prototyping and interface design tool for planning responsive user interfaces.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="9" cy="6" r="3" fill="#FFFFFF" fillOpacity="0.05" />
-          <circle cx="15" cy="6" r="3" />
-          <circle cx="9" cy="12" r="3" />
-          <circle cx="15" cy="12" r="3" />
-          <path d="M9 18a3 3 0 0 1-3-3h3v3z" />
-          <circle cx="15" cy="18" r="3" />
-        </svg>
-      )
+      icon: <SiFigma className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Postman',
       category: 'Tools & Payments',
       color: '#FF6C37',
       description: 'API testing and documentation utility for verifying endpoint integrations and payloads.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="10" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M12 5l3 4h-6z" />
-          <path d="M12 9v8" />
-        </svg>
-      )
+      icon: <SiPostman className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'WebSocket API',
       category: 'Backend & DB',
       color: '#00D2FF',
       description: 'Bidirectional real-time socket connections for high-performance live features.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="10" fill="#FFFFFF" fillOpacity="0.05" />
-          <path d="M8 12h8M12 8v8" />
-          <circle cx="12" cy="12" r="4" />
-        </svg>
-      )
+      icon: <SiSocketdotio className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Stripe',
       category: 'Tools & Payments',
       color: '#635BFF',
       description: 'Global payment gateway integration for secure credit card billing and checkout flows.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2">
-          <path d="M16 8.5c0-1.5-1.2-2.5-3-2.5c-2.3 0-3.5 1.2-3.5 2.5c0 2 3.5 1.5 3.5 3c0 1.5-1.2 2.5-3.2 2.5c-2.5 0-3.8-1.2-3.8-2.8" />
-        </svg>
-      )
+      icon: <SiStripe className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Razorpay',
       category: 'Tools & Payments',
       color: '#0A2540',
       description: 'Leading payment processing ecosystem tailored for localized transaction routing.',
-      icon: (
-        <svg className="w-6 h-6 sm:w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M19 3L5 15h9l-4 6l11-12h-9z" fill="#FFFFFF" fillOpacity="0.05" />
-        </svg>
-      )
+      icon: <SiRazorpay className="w-6 h-6 sm:w-8 h-8" />
     }
   ];
 
@@ -358,83 +251,65 @@ export default function Skills() {
     {
       name: 'Clean Code',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#4CAF50',
       description: 'Clean Code — writing readable, maintainable, and self-documenting codebases.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">{`{ }`}</div>
-      )
+      icon: <TbCode className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Semantic Web',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#FF5722',
       description: 'Semantic Web — focusing on accessibility, SEO, and standards-compliant structures.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">{`</>`}</div>
-      )
+      icon: <TbHierarchy className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Command Line',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#00E676',
       description: 'Command Line — leveraging terminal scripting, automation, and tooling efficiency.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">⌥</div>
-      )
+      icon: <TbTerminal2 className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'System Architecture',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#9C27B0',
       description: 'System Architecture — designing robust integrations and decoupled component layers.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">⌘</div>
-      )
+      icon: <TbTopologyRing3 className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'High Performance',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#FFEB3B',
       description: 'High Performance — optimizing asset loading, bundle sizes, and DOM rendering.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">⚡</div>
-      )
+      icon: <TbBolt className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Global Scale',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#00E5FF',
       description: 'Global Scale — building responsive, localized web services ready for regional markets.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">🌐</div>
-      )
+      icon: <TbWorld className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Automation & CI/CD',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#FF9100',
       description: 'Automation & CI/CD — streamlining build flows, tests, and target deployments.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">⚙️</div>
-      )
+      icon: <TbSettingsAutomation className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Secured by Design',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#E91E63',
       description: 'Secured by Design — enforcing HTTPS, sanitizing payloads, and safeguarding credentials.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">🔒</div>
-      )
+      icon: <TbShieldLock className="w-6 h-6 sm:w-8 h-8" />
     },
     {
       name: 'Cloud Infrastructure',
       category: 'Core Values',
-      color: '#A3A3A3',
+      color: '#29B6F6',
       description: 'Cloud Infrastructure — orchestrating virtual environments, static buckets, and serverless tasks.',
-      icon: (
-        <div className="text-xs sm:text-sm font-mono font-bold text-neutral-600">☁️</div>
-      )
+      icon: <TbCloud className="w-6 h-6 sm:w-8 h-8" />
     }
   ];
 
@@ -444,8 +319,15 @@ export default function Skills() {
   // Currently active (hovered) skill. Defaults to general summary if none hovered.
   const activeSkill = hoveredIndex !== null ? allGridSkills[hoveredIndex] : null;
 
-  // Compile array of node children to feed into Cubes
-  const cubeIcons = allGridSkills.map(s => s.icon);
+  // Compile array of node children to feed into Cubes, injecting their brand colors dynamically
+  const cubeIcons = allGridSkills.map(s => {
+    if (React.isValidElement(s.icon)) {
+      return React.cloneElement(s.icon as React.ReactElement<any>, {
+        style: { color: s.color }
+      });
+    }
+    return s.icon;
+  });
 
   return (
     <section id="projects" className="relative w-full min-h-screen bg-black flex items-center justify-center py-20 px-6 sm:px-12 md:px-16 overflow-hidden">
