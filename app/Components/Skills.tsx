@@ -1,32 +1,69 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from "react";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiHtml5,
+  SiTailwindcss,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiAngular,
+  SiThreedotjs,
+  SiGreensock,
+  SiFramer,
+  SiMongodb,
+  SiPostgresql,
+  SiRedis,
+  SiGit,
+  SiGithub,
+  SiDocker,
+  SiFigma,
+  SiPostman,
+  SiStripe,
+  SiRazorpay,
+  SiWordpress
+} from 'react-icons/si';
+import { FaCss3Alt, FaAws } from 'react-icons/fa';
 
-const images = [
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1592124549776-a7f0cc973b24?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1557296387-5358ad7997bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1521146764736-56c929d59c83?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1593529467220-9d721ceb9a78?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1544348817-5f2cf14b88c8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1596215143922-eedeaba0d91c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1560787313-5dff3307e257?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
-  "https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60"
+const skillIcons = [
+  { icon: SiJavascript, color: '#F7DF1E', name: 'JavaScript' },
+  { icon: SiTypescript, color: '#3178C6', name: 'TypeScript' },
+  { icon: SiHtml5, color: '#E34F26', name: 'HTML5' },
+  { icon: FaCss3Alt, color: '#1572B6', name: 'CSS3' },
+  { icon: SiTailwindcss, color: '#06B6D4', name: 'Tailwind CSS' },
+  { icon: SiReact, color: '#61DAFB', name: 'React.js' },
+  { icon: SiNextdotjs, color: '#FFFFFF', name: 'Next.js' },
+  { icon: SiAngular, color: '#DD0031', name: 'Angular' },
+  { icon: SiNodedotjs, color: '#339933', name: 'Node.js' },
+  { icon: SiExpress, color: '#FFFFFF', name: 'Express.js' },
+  { icon: SiThreedotjs, color: '#FFFFFF', name: 'Three.js' },
+  { icon: SiGreensock, color: '#88CE02', name: 'GSAP' },
+  { icon: SiFramer, color: '#F107A3', name: 'Framer Motion' },
+  { icon: SiPostgresql, color: '#4169E1', name: 'PostgreSQL' },
+  { icon: SiMongodb, color: '#47A248', name: 'MongoDB' },
+  { icon: SiRedis, color: '#DC382D', name: 'Redis' },
+  { icon: SiGit, color: '#F05032', name: 'Git' },
+  { icon: SiGithub, color: '#FFFFFF', name: 'GitHub' },
+  { icon: SiDocker, color: '#2496ED', name: 'Docker' },
+  { icon: FaAws, color: '#FF9900', name: 'AWS' },
+  { icon: SiWordpress, color: '#21759B', name: 'Wordpress' },
+  { icon: SiFigma, color: '#F24E1E', name: 'Figma' },
+  { icon: SiPostman, color: '#FF6C37', name: 'Postman' },
+  { icon: SiStripe, color: '#635BFF', name: 'Stripe' },
+  { icon: SiRazorpay, color: '#0A2540', name: 'Razorpay' }
 ];
 
-const initialSlidesState = images.map((slide, index) => ({
-  coords: {
-    x: 0,
-    y: 0
-  },
+const initialSlidesState = skillIcons.map((skill, index) => ({
+  coords: { x: 0, y: 0 },
   theta: 0,
   index: index + 1,
-  image: slide
+  ...skill
 }));
 
-const numSlides = images.length;
+const numSlides = skillIcons.length;
 const angle = 360 / numSlides;
 
 export default function Skills() {
@@ -79,7 +116,7 @@ export default function Skills() {
     });
 
     setSlides(positionedSlides);
-  }, [wheelWidth, theta]); // Added theta as a dependency just to satisfy linter usually, but logically safe here
+  }, [wheelWidth, theta]);
 
   const handleSlideClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const nextIndex = parseFloat(e.currentTarget.dataset.index || "1");
@@ -100,8 +137,6 @@ export default function Skills() {
     setRotate((prevRotate) => prevRotate + angle * numOfRotations);
   };
 
-
-
   return (
     <section id="skills" className="skills-carousel-container footer-grid-bg">
       <style>{`
@@ -115,8 +150,8 @@ export default function Skills() {
         }
 
         .skills-wheel {
-          width: 65vmin;
-          height: 65vmin;
+          width: 85vmin;
+          height: 85vmin;
           position: absolute;
           top: 50%;
           left: 50%;
@@ -125,8 +160,8 @@ export default function Skills() {
         }
 
         .skills-slide {
-          width: 15vmin;
-          height: 15vmin;
+          width: 7.5vmin;
+          height: 7.5vmin;
           border-radius: 50%;
           overflow: hidden;
           position: absolute;
@@ -134,33 +169,34 @@ export default function Skills() {
           left: 50%;
           transform: translate(-50%, -50%);
           cursor: pointer;
-          transition: transform var(--duration) var(--easing);
-          border: 0.3vmin solid white;
-        }
-
-        .skills-slide img {
-          user-select: none;
+          transition: transform var(--duration) var(--easing), border-color var(--duration) var(--easing), background-color var(--duration) var(--easing);
+          border: 1px solid rgba(255,255,255,0.15);
+          background-color: rgba(15, 15, 15, 0.8);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(4px);
         }
 
         .skills-slide.active {
-          border-width: 1.3vmin;
+          border: 0.3vmin solid white;
+          background-color: rgba(30, 30, 30, 0.95);
+          box-shadow: 0 0 20px rgba(255,255,255,0.1);
+          z-index: 10;
         }
 
-        .skills-slide img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .skills-slide svg {
+          width: 50%;
+          height: 50%;
           pointer-events: none;
         }
-
-
       `}</style>
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 font-display text-4xl sm:text-5xl md:text-7xl font-black text-neutral-200 uppercase tracking-[0.1em] pointer-events-none select-none drop-shadow-lg">
-        SKILLS
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 font-display text-4xl sm:text-5xl md:text-7xl font-black text-neutral-200 uppercase tracking-[0.1em] pointer-events-none select-none drop-shadow-lg flex flex-col items-center gap-2">
+        <span>SKILLS</span>
+        <span className="text-sm sm:text-xl md:text-2xl font-sans tracking-normal text-neutral-400 opacity-80" style={{ color: activeSlide.color }}>
+          {activeSlide.name}
+        </span>
       </div>
 
       <div
@@ -172,6 +208,7 @@ export default function Skills() {
       >
         {slides &&
           slides.map((slide, index) => {
+            const Icon = slide.icon;
             return (
               <div
                 onClick={handleSlideClick}
@@ -183,8 +220,9 @@ export default function Skills() {
                   left: center.y + slide.coords.y,
                   transform: `translate(-50%, -50%) rotate(${-rotate}deg)`
                 }}
+                title={slide.name}
               >
-                <img src={slide.image} alt={`Slide ${index + 1}`} />
+                <Icon style={{ color: slide.color }} />
               </div>
             );
           })}
