@@ -29,31 +29,31 @@ import {
 import { FaCss3Alt, FaAws } from 'react-icons/fa';
 
 const skillIcons = [
-  { icon: SiJavascript, color: '#F7DF1E', name: 'JavaScript' },
-  { icon: SiTypescript, color: '#3178C6', name: 'TypeScript' },
-  { icon: SiHtml5, color: '#E34F26', name: 'HTML5' },
-  { icon: FaCss3Alt, color: '#1572B6', name: 'CSS3' },
-  { icon: SiTailwindcss, color: '#06B6D4', name: 'Tailwind CSS' },
-  { icon: SiReact, color: '#61DAFB', name: 'React.js' },
+  { icon: SiJavascript, color: '#FFFFFF', name: 'JavaScript' },
+  { icon: SiTypescript, color: '#FFFFFF', name: 'TypeScript' },
+  { icon: SiHtml5, color: '#FFFFFF', name: 'HTML5' },
+  { icon: FaCss3Alt, color: '#FFFFFF', name: 'CSS3' },
+  { icon: SiTailwindcss, color: '#FFFFFF', name: 'Tailwind CSS' },
+  { icon: SiReact, color: '#FFFFFF', name: 'React.js' },
   { icon: SiNextdotjs, color: '#FFFFFF', name: 'Next.js' },
-  { icon: SiAngular, color: '#DD0031', name: 'Angular' },
-  { icon: SiNodedotjs, color: '#339933', name: 'Node.js' },
+  { icon: SiAngular, color: '#FFFFFF', name: 'Angular' },
+  { icon: SiNodedotjs, color: '#FFFFFF', name: 'Node.js' },
   { icon: SiExpress, color: '#FFFFFF', name: 'Express.js' },
   { icon: SiThreedotjs, color: '#FFFFFF', name: 'Three.js' },
-  { icon: SiGreensock, color: '#88CE02', name: 'GSAP' },
-  { icon: SiFramer, color: '#F107A3', name: 'Framer Motion' },
-  { icon: SiPostgresql, color: '#4169E1', name: 'PostgreSQL' },
-  { icon: SiMongodb, color: '#47A248', name: 'MongoDB' },
-  { icon: SiRedis, color: '#DC382D', name: 'Redis' },
-  { icon: SiGit, color: '#F05032', name: 'Git' },
+  { icon: SiGreensock, color: '#FFFFFF', name: 'GSAP' },
+  { icon: SiFramer, color: '#FFFFFF', name: 'Framer Motion' },
+  { icon: SiPostgresql, color: '#FFFFFF', name: 'PostgreSQL' },
+  { icon: SiMongodb, color: '#FFFFFF', name: 'MongoDB' },
+  { icon: SiRedis, color: '#FFFFFF', name: 'Redis' },
+  { icon: SiGit, color: '#FFFFFF', name: 'Git' },
   { icon: SiGithub, color: '#FFFFFF', name: 'GitHub' },
-  { icon: SiDocker, color: '#2496ED', name: 'Docker' },
-  { icon: FaAws, color: '#FF9900', name: 'AWS' },
-  { icon: SiWordpress, color: '#21759B', name: 'Wordpress' },
-  { icon: SiFigma, color: '#F24E1E', name: 'Figma' },
-  { icon: SiPostman, color: '#FF6C37', name: 'Postman' },
-  { icon: SiStripe, color: '#635BFF', name: 'Stripe' },
-  { icon: SiRazorpay, color: '#0A2540', name: 'Razorpay' }
+  { icon: SiDocker, color: '#FFFFFF', name: 'Docker' },
+  { icon: FaAws, color: '#FFFFFF', name: 'AWS' },
+  { icon: SiWordpress, color: '#FFFFFF', name: 'Wordpress' },
+  { icon: SiFigma, color: '#FFFFFF', name: 'Figma' },
+  { icon: SiPostman, color: '#FFFFFF', name: 'Postman' },
+  { icon: SiStripe, color: '#FFFFFF', name: 'Stripe' },
+  { icon: SiRazorpay, color: '#FFFFFF', name: 'Razorpay' }
 ];
 
 const initialSlidesState = skillIcons.map((skill, index) => ({
@@ -160,8 +160,8 @@ export default function Skills() {
         }
 
         .skills-slide {
-          width: 7.5vmin;
-          height: 7.5vmin;
+          width: 10vmin;
+          height: 10vmin;
           border-radius: 50%;
           overflow: hidden;
           position: absolute;
