@@ -100,21 +100,7 @@ export default function Skills() {
     setRotate((prevRotate) => prevRotate + angle * numOfRotations);
   };
 
-  const handleLeftClick = () => {
-    const currentIndex = activeSlide.index;
-    const nextIndex = currentIndex < numSlides ? currentIndex + 1 : 1;
 
-    setActiveSlide(slides[nextIndex - 1]);
-    setRotate((prevRotate) => prevRotate + angle);
-  };
-
-  const handleRightClick = () => {
-    const currentIndex = activeSlide.index;
-    const nextIndex = currentIndex === 1 ? numSlides : currentIndex - 1;
-
-    setActiveSlide(slides[nextIndex - 1]);
-    setRotate((prevRotate) => prevRotate - angle);
-  };
 
   return (
     <section id="skills" className="skills-carousel-container footer-grid-bg">
@@ -170,41 +156,12 @@ export default function Skills() {
           pointer-events: none;
         }
 
-        .skills-arrows {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 110vmin;
-        }
 
-        .skills-arrow-right,
-        .skills-arrow-left {
-          position: absolute;
-        }
-
-        .skills-arrow-right {
-          right: 0;
-        }
-
-        .skills-arrow-left {
-          left: 0;
-        }
-
-        .skills-carousel-container button {
-          border: none;
-          background: transparent;
-          cursor: pointer;
-          appearance: none;
-          color: white;
-          font-size: 2rem;
-        }
-
-        .skills-carousel-container button:active {
-          transform: scale(1.5);
-          transition: transform var(--duration) var(--easing);
-        }
       `}</style>
+
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 font-display text-4xl sm:text-5xl md:text-7xl font-black text-neutral-200 uppercase tracking-[0.1em] pointer-events-none select-none drop-shadow-lg">
+        SKILLS
+      </div>
 
       <div
         ref={wheelRef}
@@ -231,15 +188,6 @@ export default function Skills() {
               </div>
             );
           })}
-      </div>
-
-      <div className="skills-arrows">
-        <button onClick={handleLeftClick} className="skills-arrow-left">
-          <span>&larr;</span>
-        </button>
-        <button onClick={handleRightClick} className="skills-arrow-right">
-          <span>&rarr;</span>
-        </button>
       </div>
     </section>
   );
