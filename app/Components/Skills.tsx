@@ -1,436 +1,245 @@
 'use client';
 
-import React, { useState } from 'react';
-import Cubes from './Cubes';
-import {
-  SiJavascript,
-  SiTypescript,
-  SiHtml5,
-  SiTailwindcss,
-  SiReact,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiExpress,
-  SiAngular,
-  SiThreedotjs,
-  SiGreensock,
-  SiFramer,
-  SiRedux,
-  SiMongodb,
-  SiPostgresql,
-  SiRedis,
-  SiGit,
-  SiDocker,
-  SiVercel,
-  SiFirebase,
-  SiFigma,
-  SiPostman,
-  SiSocketdotio,
-  SiStripe,
-  SiRazorpay
-} from 'react-icons/si';
-import { FaCss3Alt, FaAws } from 'react-icons/fa';
-import {
-  TbCode,
-  TbHierarchy,
-  TbTerminal2,
-  TbTopologyRing3,
-  TbBolt,
-  TbWorld,
-  TbSettingsAutomation,
-  TbShieldLock,
-  TbCloud
-} from 'react-icons/tb';
+import React, { useRef, useState, useEffect } from "react";
 
-interface SkillItem {
-  name: string;
-  category: string;
-  color: string;
-  description: string;
-  icon: React.ReactNode;
-}
+const images = [
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1592124549776-a7f0cc973b24?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1557296387-5358ad7997bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1521146764736-56c929d59c83?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1593529467220-9d721ceb9a78?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1544348817-5f2cf14b88c8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1596215143922-eedeaba0d91c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1560787313-5dff3307e257?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60"
+];
+
+const initialSlidesState = images.map((slide, index) => ({
+  coords: {
+    x: 0,
+    y: 0
+  },
+  theta: 0,
+  index: index + 1,
+  image: slide
+}));
+
+const numSlides = images.length;
+const angle = 360 / numSlides;
 
 export default function Skills() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const wheelRef = useRef<HTMLDivElement>(null);
 
-  // 27 core technical skills
-  const coreSkills: SkillItem[] = [
-    {
-      name: 'JavaScript',
-      category: 'Languages',
-      color: '#F7DF1E',
-      description: 'Core scripting language for client-side and server-side application logic.',
-      icon: <SiJavascript className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'TypeScript',
-      category: 'Languages',
-      color: '#3178C6',
-      description: 'Strongly typed superset of JavaScript for building robust, self-documenting applications.',
-      icon: <SiTypescript className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'HTML5',
-      category: 'Languages',
-      color: '#E34F26',
-      description: 'Semantic markup and modern layout structures for search-engine-optimized interfaces.',
-      icon: <SiHtml5 className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'CSS3',
-      category: 'Languages',
-      color: '#1572B6',
-      description: 'Advanced responsive layouts, animations, transitions, and native styling rules.',
-      icon: <FaCss3Alt className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Tailwind CSS',
-      category: 'Frontend',
-      color: '#06B6D4',
-      description: 'Utility-first design systems for building lightning-fast, sleek custom interfaces.',
-      icon: <SiTailwindcss className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'React.js',
-      category: 'Frontend',
-      color: '#61DAFB',
-      description: 'Component-based architecture for crafting reactive, high-performance web interfaces.',
-      icon: <SiReact className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Next.js',
-      category: 'Frontend',
-      color: '#FFFFFF',
-      description: 'Production-grade React framework featuring server components, SSR, and optimized routing.',
-      icon: <SiNextdotjs className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Node.js',
-      category: 'Backend & DB',
-      color: '#339933',
-      description: 'Event-driven asynchronous server environment for constructing high-throughput backends.',
-      icon: <SiNodedotjs className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Express.js',
-      category: 'Backend & DB',
-      color: '#FFFFFF',
-      description: 'Minimalist web framework for building performant RESTful APIs and middleware services.',
-      icon: <SiExpress className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Angular',
-      category: 'Frontend',
-      color: '#DD0031',
-      description: 'Enterprise-grade client framework for structured, modular frontend architectures.',
-      icon: <SiAngular className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Three.js',
-      category: 'Creative & Motion',
-      color: '#FF5E00',
-      description: '3D web graphics library for rendering interactive WebGL components directly in the browser.',
-      icon: <SiThreedotjs className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'GSAP',
-      category: 'Creative & Motion',
-      color: '#88CE02',
-      description: 'Industry-leading timeline animation engine for rich, high-performance interactions.',
-      icon: <SiGreensock className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Framer Motion',
-      category: 'Creative & Motion',
-      color: '#F107A3',
-      description: 'Declarative motion library for fluid React layout transitions and physics-based animations.',
-      icon: <SiFramer className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Redux Toolkit',
-      category: 'Frontend',
-      color: '#764ABC',
-      description: 'Predictable global state management container for large-scale, complex client apps.',
-      icon: <SiRedux className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'MongoDB',
-      category: 'Backend & DB',
-      color: '#47A248',
-      description: 'NoSQL document database enabling flexible schemas and fast horizontal scaling.',
-      icon: <SiMongodb className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'PostgreSQL',
-      category: 'Backend & DB',
-      color: '#4169E1',
-      description: 'Advanced, ACID-compliant relational SQL database for structured transactional storage.',
-      icon: <SiPostgresql className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Redis',
-      category: 'Backend & DB',
-      color: '#DC382D',
-      description: 'In-memory caching store facilitating ultra-low latency key-value operations and session states.',
-      icon: <SiRedis className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Git',
-      category: 'DevOps & Platforms',
-      color: '#F05032',
-      description: 'Distributed version control system for robust team collaboration and source tracking.',
-      icon: <SiGit className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Docker',
-      category: 'DevOps & Platforms',
-      color: '#2496ED',
-      description: 'Containerization platform to build, package, and deploy software services consistently.',
-      icon: <SiDocker className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'AWS',
-      category: 'DevOps & Platforms',
-      color: '#FF9900',
-      description: 'Cloud hosting, computing, and managed database services for high scalability.',
-      icon: <FaAws className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Vercel',
-      category: 'DevOps & Platforms',
-      color: '#FFFFFF',
-      description: 'Optimized serverless hosting platform tailored for Next.js and frontend applications.',
-      icon: <SiVercel className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Firebase',
-      category: 'DevOps & Platforms',
-      color: '#FFCA28',
-      description: 'Backend-as-a-Service covering authentication, real-time databases, and cloud alerts.',
-      icon: <SiFirebase className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Figma',
-      category: 'Tools & Payments',
-      color: '#F24E1E',
-      description: 'Visual prototyping and interface design tool for planning responsive user interfaces.',
-      icon: <SiFigma className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Postman',
-      category: 'Tools & Payments',
-      color: '#FF6C37',
-      description: 'API testing and documentation utility for verifying endpoint integrations and payloads.',
-      icon: <SiPostman className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'WebSocket API',
-      category: 'Backend & DB',
-      color: '#00D2FF',
-      description: 'Bidirectional real-time socket connections for high-performance live features.',
-      icon: <SiSocketdotio className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Stripe',
-      category: 'Tools & Payments',
-      color: '#635BFF',
-      description: 'Global payment gateway integration for secure credit card billing and checkout flows.',
-      icon: <SiStripe className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Razorpay',
-      category: 'Tools & Payments',
-      color: '#0A2540',
-      description: 'Leading payment processing ecosystem tailored for localized transaction routing.',
-      icon: <SiRazorpay className="w-6 h-6 sm:w-8 h-8" />
+  const [slides, setSlides] = useState(initialSlidesState);
+  const [activeSlide, setActiveSlide] = useState(slides[0]);
+  const [wheelWidth, setWheelWidth] = useState(0);
+  const [theta, setTheta] = useState(Math.PI / (numSlides / 2));
+  const [center, setCenter] = useState({ x: 0, y: 0 });
+  const [rotate, setRotate] = useState(0);
+
+  const getInitialPositions = () => {
+    if (!wheelRef.current) {
+      return;
     }
-  ];
+    const center = {
+      x: parseFloat(getComputedStyle(wheelRef.current).width) / 2,
+      y: parseFloat(getComputedStyle(wheelRef.current).width) / 2
+    };
 
-  // 9 decorative tech elements to fill the 6x6 grid (36 cells total)
-  const decorativeSkills: SkillItem[] = [
-    {
-      name: 'Clean Code',
-      category: 'Core Values',
-      color: '#4CAF50',
-      description: 'Clean Code — writing readable, maintainable, and self-documenting codebases.',
-      icon: <TbCode className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Semantic Web',
-      category: 'Core Values',
-      color: '#FF5722',
-      description: 'Semantic Web — focusing on accessibility, SEO, and standards-compliant structures.',
-      icon: <TbHierarchy className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Command Line',
-      category: 'Core Values',
-      color: '#00E676',
-      description: 'Command Line — leveraging terminal scripting, automation, and tooling efficiency.',
-      icon: <TbTerminal2 className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'System Architecture',
-      category: 'Core Values',
-      color: '#9C27B0',
-      description: 'System Architecture — designing robust integrations and decoupled component layers.',
-      icon: <TbTopologyRing3 className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'High Performance',
-      category: 'Core Values',
-      color: '#FFEB3B',
-      description: 'High Performance — optimizing asset loading, bundle sizes, and DOM rendering.',
-      icon: <TbBolt className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Global Scale',
-      category: 'Core Values',
-      color: '#00E5FF',
-      description: 'Global Scale — building responsive, localized web services ready for regional markets.',
-      icon: <TbWorld className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Automation & CI/CD',
-      category: 'Core Values',
-      color: '#FF9100',
-      description: 'Automation & CI/CD — streamlining build flows, tests, and target deployments.',
-      icon: <TbSettingsAutomation className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Secured by Design',
-      category: 'Core Values',
-      color: '#E91E63',
-      description: 'Secured by Design — enforcing HTTPS, sanitizing payloads, and safeguarding credentials.',
-      icon: <TbShieldLock className="w-6 h-6 sm:w-8 h-8" />
-    },
-    {
-      name: 'Cloud Infrastructure',
-      category: 'Core Values',
-      color: '#29B6F6',
-      description: 'Cloud Infrastructure — orchestrating virtual environments, static buckets, and serverless tasks.',
-      icon: <TbCloud className="w-6 h-6 sm:w-8 h-8" />
+    setCenter(center);
+    setWheelWidth(parseFloat(getComputedStyle(wheelRef.current).width));
+  };
+
+  useEffect(() => {
+    if (!wheelRef.current) {
+      return;
     }
-  ];
+    getInitialPositions();
+    window.addEventListener("resize", getInitialPositions);
+    return () => window.removeEventListener("resize", getInitialPositions);
+  }, []);
 
-  // Combine to create exactly 36 elements for the 6x6 grid
-  const allGridSkills = [...coreSkills, ...decorativeSkills];
-
-  // Currently active (hovered) skill. Defaults to general summary if none hovered.
-  const activeSkill = hoveredIndex !== null ? allGridSkills[hoveredIndex] : null;
-
-  // Compile array of node children to feed into Cubes, injecting their brand colors dynamically
-  const cubeIcons = allGridSkills.map(s => {
-    if (React.isValidElement(s.icon)) {
-      return React.cloneElement(s.icon as React.ReactElement<any>, {
-        style: { color: s.color }
-      });
+  useEffect(() => {
+    if (!wheelWidth) {
+      return;
     }
-    return s.icon;
-  });
+
+    const positionedSlides = slides.map((slide, index) => {
+      const newTheta = theta * (index + numSlides);
+      const wheelRadius = wheelWidth / 2;
+      const x = Math.cos(newTheta) * -wheelRadius;
+      const y = Math.sin(newTheta) * -wheelRadius;
+
+      return {
+        ...slide,
+        coords: { x, y }
+      };
+    });
+
+    setSlides(positionedSlides);
+  }, [wheelWidth, theta]); // Added theta as a dependency just to satisfy linter usually, but logically safe here
+
+  const handleSlideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const nextIndex = parseFloat(e.currentTarget.dataset.index || "1");
+    const currentIndex = activeSlide.index;
+
+    setActiveSlide(slides[nextIndex - 1]);
+
+    let numOfRotations = nextIndex - currentIndex;
+
+    if (numOfRotations < -numSlides / 2) {
+      numOfRotations = numOfRotations + numSlides;
+    }
+
+    if (numOfRotations > numSlides / 2) {
+      numOfRotations = numOfRotations - numSlides;
+    }
+
+    setRotate((prevRotate) => prevRotate + angle * numOfRotations);
+  };
+
+  const handleLeftClick = () => {
+    const currentIndex = activeSlide.index;
+    const nextIndex = currentIndex < numSlides ? currentIndex + 1 : 1;
+
+    setActiveSlide(slides[nextIndex - 1]);
+    setRotate((prevRotate) => prevRotate + angle);
+  };
+
+  const handleRightClick = () => {
+    const currentIndex = activeSlide.index;
+    const nextIndex = currentIndex === 1 ? numSlides : currentIndex - 1;
+
+    setActiveSlide(slides[nextIndex - 1]);
+    setRotate((prevRotate) => prevRotate - angle);
+  };
 
   return (
-    <section id="projects" className="relative w-full min-h-screen bg-black flex items-center justify-center py-20 px-6 sm:px-12 md:px-16 overflow-hidden">
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
-        {/* Left Column: Title & Dynamic Description Card (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col text-left z-20 h-full justify-between min-h-[380px]">
-          <div>
-            <div className="relative mb-6 select-none">
-              <h2 className="font-handwritten text-5xl sm:text-6xl font-bold text-neutral-300 tracking-wider leading-none">
-                TECHNICAL
-              </h2>
-              <div className="font-display text-4xl sm:text-5xl font-black text-white uppercase tracking-tight leading-none mt-[-4px] sm:mt-[-8px] pl-0.5">
-                SKILLSET
+    <section id="skills" className="skills-carousel-container footer-grid-bg">
+      <style>{`
+        .skills-carousel-container {
+          --easing: cubic-bezier(0.18, 0.89, 0.32, 1.27);
+          --duration: 0.5s;
+          position: relative;
+          width: 100vw;
+          min-height: 100vh;
+          overflow: hidden;
+        }
+
+        .skills-wheel {
+          width: 65vmin;
+          height: 65vmin;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: transform var(--duration) var(--easing);
+        }
+
+        .skills-slide {
+          width: 15vmin;
+          height: 15vmin;
+          border-radius: 50%;
+          overflow: hidden;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+          transition: transform var(--duration) var(--easing);
+          border: 0.3vmin solid white;
+        }
+
+        .skills-slide img {
+          user-select: none;
+        }
+
+        .skills-slide.active {
+          border-width: 1.3vmin;
+        }
+
+        .skills-slide img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          pointer-events: none;
+        }
+
+        .skills-arrows {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 110vmin;
+        }
+
+        .skills-arrow-right,
+        .skills-arrow-left {
+          position: absolute;
+        }
+
+        .skills-arrow-right {
+          right: 0;
+        }
+
+        .skills-arrow-left {
+          left: 0;
+        }
+
+        .skills-carousel-container button {
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          appearance: none;
+          color: white;
+          font-size: 2rem;
+        }
+
+        .skills-carousel-container button:active {
+          transform: scale(1.5);
+          transition: transform var(--duration) var(--easing);
+        }
+      `}</style>
+
+      <div
+        ref={wheelRef}
+        className="skills-wheel"
+        style={{
+          transform: `translate(-50%, -50%) rotate(${rotate}deg)`
+        }}
+      >
+        {slides &&
+          slides.map((slide, index) => {
+            return (
+              <div
+                onClick={handleSlideClick}
+                key={index}
+                data-index={index + 1}
+                className={`skills-slide ${slide.index === activeSlide.index ? "active" : ""}`}
+                style={{
+                  top: center.x + slide.coords.x,
+                  left: center.y + slide.coords.y,
+                  transform: `translate(-50%, -50%) rotate(${-rotate}deg)`
+                }}
+              >
+                <img src={slide.image} alt={`Slide ${index + 1}`} />
               </div>
-            </div>
-            
-            <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-8">
-              Explore the tech stack, libraries, and protocols I use to bring ideas to life. 
-              Hover over individual cubes in the grid to display deep-dive logs and category indices.
-            </p>
-          </div>
+            );
+          })}
+      </div>
 
-          {/* Active Skill Info display panel */}
-          <div className="relative w-full border border-neutral-800 bg-neutral-950/60 backdrop-blur-md rounded-xl p-6 min-h-[180px] sm:min-h-[200px] flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-2xl">
-            {/* Background highlight glow sync'd with skill brand color */}
-            <div 
-              className="absolute -right-16 -bottom-16 w-32 h-32 rounded-full blur-3xl opacity-20 transition-all duration-500 pointer-events-none"
-              style={{ backgroundColor: activeSkill ? activeSkill.color : '#FFFFFF' }}
-            />
-            
-            {activeSkill ? (
-              <div className="flex flex-col h-full justify-between z-10">
-                <div>
-                  <div className="flex items-center justify-between gap-4 mb-3">
-                    <span 
-                      className="px-2.5 py-0.5 text-[10px] uppercase font-bold tracking-[0.1em] border rounded-full transition-all duration-300"
-                      style={{ 
-                        color: activeSkill.color, 
-                        borderColor: `${activeSkill.color}50`,
-                        backgroundColor: `${activeSkill.color}08`
-                      }}
-                    >
-                      {activeSkill.category}
-                    </span>
-                    
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-display font-black text-white uppercase tracking-wide">
-                    {activeSkill.name}
-                  </h3>
-                </div>
-                
-                <p className="text-neutral-300 text-[13px] sm:text-[14px] leading-relaxed mt-4 transition-all duration-300">
-                  {activeSkill.description}
-                </p>
-              </div>
-            ) : (
-              <div className="flex flex-col h-full justify-between z-10 text-neutral-500">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                  
-                   
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-display font-black text-neutral-400 uppercase tracking-wide">
-                    MY SKILLS
-                  </h3>
-                </div>
-
-                <p className="text-neutral-400 text-[13px] sm:text-[14px] leading-relaxed mt-4">
-                  Over the past 2 years, I have constructed production systems ranging from custom ERP architectures to modern GCC automotive interfaces. Hover a grid module to review specific capabilities.
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Right Column: 3D Cubes interactive grid (7 cols) */}
-        <div className="lg:col-span-7 flex items-center justify-center z-10">
-          <div className="w-full max-w-[680px] aspect-square relative border border-neutral-900 bg-neutral-950/30 rounded-2xl p-6 sm:p-8 flex items-center justify-center shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] backdrop-blur-xs">
-            {/* Subtle background grid alignment ticks */}
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none p-4 opacity-10">
-              <div className="border-r border-b border-neutral-500 border-dashed" />
-              <div className="border-b border-neutral-500 border-dashed" />
-              <div className="border-r border-neutral-500 border-dashed" />
-              <div className="border-neutral-500 border-dashed" />
-            </div>
-
-            <Cubes 
-              gridSize={6}
-              maxAngle={100}
-              radius={2}
-              borderStyle="1px solid #1f1f23"
-              faceColor="#0b0b0d"
-              rippleColor="#26262b"
-              rippleSpeed={1.5}
-              autoAnimate={true}
-              rippleOnClick={true}
-              onHoverSkill={setHoveredIndex}
-              childrenArray={cubeIcons}
-            />
-          </div>
-        </div>
-
+      <div className="skills-arrows">
+        <button onClick={handleLeftClick} className="skills-arrow-left">
+          <span>&larr;</span>
+        </button>
+        <button onClick={handleRightClick} className="skills-arrow-right">
+          <span>&rarr;</span>
+        </button>
       </div>
     </section>
   );
