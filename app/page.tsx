@@ -2,6 +2,7 @@ import React from 'react'
 import HeroSection from './Components/HeroSection'
 import AboutMe from './Components/AboutMe'
 import Skills from './Components/Skills'
+import Projects from './Components/Projects'
 import Experience from './Components/Experience'
 import Gallery from './Components/Gallery'
 import Footer from './Components/Footer'
@@ -12,6 +13,7 @@ const page = () => {
       <HeroSection />
       <AboutMe />
       <Skills />
+      <Projects />
       <Experience />
       {/* 3D Dome Gallery Section */}
       <section className="relative w-full h-screen bg-black flex flex-col justify-start items-center overflow-hidden pt-16">
