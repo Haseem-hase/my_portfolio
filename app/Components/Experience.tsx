@@ -96,7 +96,7 @@ export default function Experience() {
                     href={active.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30 transition-colors"
+                    className="text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-md bg-[#C5FF41]/10 text-[#C5FF41] border border-[#C5FF41]/30 hover:bg-[#C5FF41]/20 transition-colors"
                   >
                     {active.company}
                   </a>
@@ -207,7 +207,7 @@ export default function Experience() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="text-xs uppercase tracking-wider text-purple-400 font-semibold md:mt-0.5 hover:underline"
+                    className="text-xs uppercase tracking-wider text-[#C5FF41] font-semibold md:mt-0.5 hover:underline"
                   >
                     {experience.company}
                   </a>

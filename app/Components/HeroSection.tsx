@@ -65,7 +65,10 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen bg-black flex flex-col justify-start items-center overflow-hidden">
+    <section ref={containerRef} className="relative w-full min-h-screen footer-grid-bg flex flex-col justify-start items-center overflow-hidden">
+      {/* Grainy Noise Overlay */}
+      <div className="noise-overlay" />
+
       {/* Top Navigation */}
       <header className="w-full z-30">
         <nav className="w-full max-w-6xl mx-auto px-6 md:px-8 pt-8 pb-3 flex justify-between items-center text-xs md:text-sm font-bold tracking-[0.25em] text-neutral-400">
@@ -112,20 +115,22 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Right Side Glow Button */}
+        {/* Right Side Button */}
         <div className="flex items-center justify-end w-full md:w-auto">
-          <button className="glow-button group">
+          <button className="bg-[#C5FF41] text-black font-bold text-xs md:text-sm tracking-wider rounded-full py-3 px-6 md:py-4 md:px-8 hover:bg-[#b3eb38] transition-all uppercase flex items-center gap-3 group">
             LET'S CONNECT
-            <svg
-              className="w-4 h-4 text-white transform group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white transition-colors">
+              <svg
+                className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5m0 0v10m0-10H9" />
+              </svg>
+            </div>
           </button>
         </div>
       </div>
