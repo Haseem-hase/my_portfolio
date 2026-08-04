@@ -2,8 +2,6 @@
 
 import * as React from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { SquareArrowOutUpRight } from "lucide-react";
-import Link from "next/link";
 
 function cn(...classes: Array<string | undefined | null | false>) {
   return classes.filter(Boolean).join(" ");
@@ -243,11 +241,6 @@ export function CardStack<T extends CardStackItem>({
               );
             })}
           </div>
-          {activeItem.href ? (
-            <Link href={activeItem.href} target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition" aria-label="Open link">
-              <SquareArrowOutUpRight className="h-4 w-4" />
-            </Link>
-          ) : null}
         </div>
       ) : null}
     </div>
